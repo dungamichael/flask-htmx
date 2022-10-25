@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+  <h1>Length Conversion</h1>
+  <form 
+    hx-post="/main/conversion/length_conversion" 
+    hx-swap="beforeend" 
+    hx-target="#response" 
+    class="mb-3">
+    <div class="form-group">
+      <label for="original_value">Distance:</label>
+      <input type="number" 
+        id="original_value" 
+        placeholder="Enter the value of distance to convert" 
+        name="original_value" 
+        class="form-control mb-3"
+        min="0"
+        step="any" 
+        required />
+    </div>
+    <div class="form-group">
+      <label for="original_unit">From:</label>
+      <select class="form-control" id="original_unit" name="original_unit">
+        <option value="millimeters">Millimeters</option>
+        <option value="centimeters">Centimeters</option>
+        <option value="meters">Meters</option>
+        <option value="kilometers">Kilometers</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="final_unit">To:</label>
+      <select class="form-control" id="final_unit" name="final_unit">
+        <option value="millimeters">Millimeters</option>
+        <option value="centimeters">Centimeters</option>
+        <option value="meters">Meters</option>
+        <option value="kilometers">Kilometers</option>
+      </select>
+    </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody 
+          id="response" 
+          hx-target="closest tr" 
+          hx-swap="outerHTML swap:0.5s"> 
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

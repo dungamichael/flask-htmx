@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+  <h1>Time In The Field</h1>
+  <form 
+    id="target"
+    hx-post="/main/time_in_the_field/index" 
+    hx-swap="outerHTML" 
+    hx-target="#target" 
+    class="mb-3">
+    <div class="form-group">
+      <label for="length">Time Out:</label>
+      <input type="number" 
+        id="time_out" 
+        placeholder="Enter Time Out" 
+        name="time_out" 
+        class="form-control mb-3"
+        min="0000"
+        max="2400"
+        pattern=".{4,4}"
+        required />
+    </div>
+    <div class="form-group">
+      <label for="time_in">Time In:</label>
+      <input type="number" 
+        id="time_in" 
+        placeholder="Enter Time In" 
+        name="time_in" 
+        class="form-control mb-3"
+        min="0000"
+        max="2400" 
+        pattern=".{4,4}"
+        required />
+    </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+{% endblock content %}

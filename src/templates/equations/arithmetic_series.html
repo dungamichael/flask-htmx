@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+  <h1>Sum of Arithmetic Series</h1>
+  <form 
+    hx-post="/main/equations/arithmetic_series" 
+    hx-swap="beforeend" 
+    hx-target="#response" 
+    class="mb-3">
+    <div class="form-group">
+      <label for="first_term">First Term <i>a:</i></label>
+      <input type="number" 
+        id="first_term" 
+        placeholder="Enter the first term of (a)" 
+        name="first_term" 
+        class="form-control mb-3"
+        step="any" 
+        required />
+    </div>
+    <div class="form-group">
+      <label for="common_difference">Common Difference <i>d:</i></label>
+      <input type="number" 
+        id="common_difference" 
+        placeholder="Enter the Common diifference (d)" 
+        name="common_difference" 
+        class="form-control mb-3"
+        step="any" 
+        required />
+    </div>
+    <div class="form-group">
+      <label for="number_of_terms">Number of Terms <i>n:</i></label>
+      <input type="number" 
+        id="number_of_terms" 
+        placeholder="Enter the number of terms (n)" 
+        name="number_of_terms" 
+        class="form-control mb-3"
+        step="any" 
+        required />
+    </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">First Term <i>a:</i></th>
+            <th scope="col">Common Difference <i>d:</i></th>
+            <th scope="col">Number of Terms <i>n:</i></th>
+            <th scope="col">Sum of Terms <i>s<i></th>
+          </tr>
+        </thead>
+        <tbody 
+          id="response" 
+          hx-target="closest tr" 
+          hx-swap="outerHTML swap:0.5s"> 
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

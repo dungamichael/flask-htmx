@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+
+   <!-- HTMX -->
+    <script src="https://unpkg.com/htmx.org@1.5.0"></script>
+
+    {% if title %}
+        <title>Dunga - {{ title }}</title>
+    {% else %}
+        <title>Dunga</title>
+    {% endif %}
+</head>
+<body>
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="/">Dunga</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link" href="{{ url_for('main.index') }}">Home</a>
+            </div>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+          {% block content %}{% endblock %}
+        </div>
+        <div class="col-md-4">
+          <div class="content-section">
+            <h3>Tools</h3>
+            <p class='text-muted'>List of tools
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('time_in_the_field.index') }}">
+                    Time In The Field
+                  </a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('area.square') }}">Area of a Square</a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('area.rectangle') }}">Area of Rectangle</a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('area.triangle') }}">Area of a Triangle</a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('area.rhombus') }}">Area of a Rhombus</a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('area.trapezoid') }}">Area of a Trapezoid</a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('area.polygon') }}">Area of a Polygon</a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('area.polygon') }}">Area of a Polygon</a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('surface_area.cube') }}">Surface Area of a Cube</a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('surface_area.parallelpiped') }}">Surface Area of a Parallelpiped</a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('surface_area.cuboid') }}">Surface Area of a Cuboid</a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('surface_area.cylinder') }}">Surface Area of a Cynder</a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('surface_area.cone') }}">Surface Area of a Cone</a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('surface_area.sphere') }}">Surface Area of a Sphere</a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('volume.cube') }}">Volume of a Cube</a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('volume.parallelpiped') }}">Volume of a Parallelpiped</a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('volume.cuboid') }}">Volume of a Cuboid</a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('volume.rectangular_prism') }}">Volume of a Rectangular Prism</a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('volume.cylinder') }}">Volume of a Cynder</a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('volume.cone') }}">Volume of a Cone</a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('volume.sphere') }}">Volume of a Sphere</a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('financial.compound_interest') }}">Compound Interest</a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('conversion.time_conversion') }}">Time Conversion</a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('conversion.length_conversion') }}">Length Conversion</a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('conversion.temperature_conversion') }}">Temperature Conversion</a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('conversion.currency_conversion') }}">Currency Conversion</a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('conversion.case_conversion') }}">Case Conversion</a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('statistics.mean') }}">Mean</a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('equations.quadratic_roots') }}">Quadratic Roots</a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('equations.arithmetic_series') }}">Arithmetic Series</a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('equations.sum_of_geometric_series') }}">Sum of Geomtric Series</a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('gcd.index') }}">GCD</a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('lcm.index') }}">LCM</a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('matrix_addition.index') }}">Matrix Addition</a>
+                </li>
+                <li class="list-group-item list-group-item-light">
+                  <a href="{{ url_for('miscellaneous.values') }}">Miscellaneous (Values)</a>
+                </li>
+              </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

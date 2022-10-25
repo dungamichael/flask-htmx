@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+  <h1>Greatest Common Divisor (GCD)</h1>
+  <form 
+    id="response"
+    hx-post="/main/gcd/index" 
+    hx-swap="outerHTML" 
+    hx-target="#response" 
+    class="mb-3">
+    <div class="form-group">
+      <label for="number_of_values">Number of values:</label>
+      <input type="number" 
+        id="number_of_values" 
+        placeholder="Enter  number of values" 
+        name="number_of_values" 
+        class="form-control mb-3"
+        min="1" 
+        required />
+    </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+{% endblock content %}

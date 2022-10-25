@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+  <h1>Finding Quadratic Roots</h1>
+  <form 
+    hx-post="/main/equations/quadratic_roots" 
+    hx-swap="beforeend" 
+    hx-target="#response" 
+    class="mb-3">
+    <div class="form-group">
+      <label for="a_coefficient">Coefficient of <i>a:</i></label>
+      <input type="number" 
+        id="a_coefficient" 
+        placeholder="Enter the coefficient of a" 
+        name="a_coefficient" 
+        class="form-control mb-3"
+        min="1" 
+        required />
+    </div>
+    <div class="form-group">
+      <label for="b_coefficient">Coefficient of <i>b:</i></label>
+      <input type="number" 
+        id="b_coefficient" 
+        placeholder="Enter the coefficient of b" 
+        name="b_coefficient" 
+        class="form-control mb-3"
+        min="0" 
+        required />
+    </div>
+    <div class="form-group">
+      <label for="c_coefficient">Coefficient of <i>c:</i></label>
+      <input type="number" 
+        id="c_coefficient" 
+        placeholder="Enter the coefficient of c" 
+        name="c_coefficient" 
+        class="form-control mb-3"
+        min="0" 
+        required />
+    </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Coefficient of <i>a:</i></th>
+            <th scope="col">Coefficient of <i>b:</i></th>
+            <th scope="col">Coefficient of <i>c:</i></th>
+            <th scope="col">Solution 1</th>
+            <th scope="col">Solution 2</th>
+
+          </tr>
+        </thead>
+        <tbody 
+          id="response" 
+          hx-target="closest tr" 
+          hx-swap="outerHTML swap:0.5s"> 
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

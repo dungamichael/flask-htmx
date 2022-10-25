@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+  <h1>Area of a Rectangle</h1>
+  <form 
+    hx-post="/main/area/rectangle" 
+    hx-swap="beforeend" 
+    hx-target="#response" 
+    class="mb-3">
+    <div class="form-group">
+      <label for="length">Length:</label>
+      <input type="number" 
+        id="length" 
+        placeholder="Enter Length" 
+        name="length" 
+        class="form-control mb-3"
+        min="1" 
+        required />
+    </div>
+    <div class="form-group">
+      <label for="width">Width:</label>
+      <input type="number" 
+        id="width" 
+        placeholder="Enter Width" 
+        name="width" 
+        class="form-control mb-3"
+        min="1" 
+        required />
+    </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Length</th>
+            <th scope="col">Width</th>
+            <th scope="col">Area</th>
+          </tr>
+        </thead>
+        <tbody 
+          id="response" 
+          hx-target="closest tr" 
+          hx-swap="outerHTML swap:0.5s"> 
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

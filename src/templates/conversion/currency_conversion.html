@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+  <h1>Currency Conversion</h1>
+  <form 
+    hx-post="/main/conversion/currency_conversion" 
+    hx-swap="beforeend" 
+    hx-target="#response" 
+    class="mb-3">
+    <div class="form-group">
+      <label for="original_value">Amount:</label>
+      <input type="number" 
+        id="original_value" 
+        placeholder="Enter the amount of money to convert" 
+        name="original_value" 
+        class="form-control mb-3"
+        min="0"
+        step="any" 
+        required />
+    </div>
+    <div class="form-group">
+      <label for="original_unit">From:</label>
+      <select class="form-control" id="original_unit" name="original_unit">
+        <option value="INR">INR</option>
+        <option value="USD">USD</option>
+        <option value="GBP">GBP</option>
+        <option value="EUR">EUR</option>
+        <option value="AUD">AUD</option>
+        <option value="KES">KES</option>
+        <option value="CAD">CAD</option>
+        <option value="INR">INR</option>
+        <option value="ZAR">ZAR</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="final_unit">To:</label>
+      <select class="form-control" id="final_unit" name="final_unit">
+        <option value="INR">INR</option>
+        <option value="USD">USD</option>
+        <option value="GBP">GBP</option>
+        <option value="EUR">EUR</option>
+        <option value="AUD">AUD</option>
+        <option value="KES">KES</option>
+        <option value="CAD">CAD</option>
+        <option value="INR">INR</option>
+        <option value="ZAR">ZAR</option>
+      </select>
+    </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody 
+          id="response" 
+          hx-target="closest tr" 
+          hx-swap="outerHTML swap:0.5s"> 
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

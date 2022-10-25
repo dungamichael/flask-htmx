@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+  <h1>Compound Interest</h1>
+  <form 
+    hx-post="/main/financial/compound_interest" 
+    hx-swap="beforeend" 
+    hx-target="#response" 
+    class="mb-3">
+    <div class="form-group">
+      <label for="principal">Principal (P):</label>
+      <input type="number" 
+        id="principal" 
+        placeholder="Enter the value of principal (P)" 
+        name="principal" 
+        class="form-control mb-3"
+        min="1" 
+        step="any"
+        required />
+    </div>
+    <div class="form-group">
+      <label for="time">Time (T):</label>
+      <input type="number" 
+        id="time" 
+        placeholder="Enter the value of time (T)" 
+        name="time" 
+        class="form-control mb-3"
+        step="any" 
+        required />
+    </div>
+    <div class="form-group">
+      <label for="rate">Rate (R):</label>
+      <input type="number" 
+        id="rate" 
+        placeholder="Enter the value of rate (R)" 
+        name="rate" 
+        class="form-control mb-3"
+        step="any" 
+        required />
+    </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Principal (P)</th>
+            <th scope="col">Time (T)</th>
+            <th scope="col">Rate (R)</th>
+            <th scope="col">Amount (A)</th>
+            <th scope="col">Comp. Int. (C.I.)</th>
+          </tr>
+        </thead>
+        <tbody 
+          id="response" 
+          hx-target="closest tr" 
+          hx-swap="outerHTML swap:0.5s"> 
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

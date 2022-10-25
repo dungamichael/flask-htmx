@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+  <h1>Area of a Cone</h1>
+  <form 
+    hx-post="/main/area/cone" 
+    hx-swap="beforeend" 
+    hx-target="#response" 
+    class="mb-3">
+    <div class="form-group">
+      <label for="length">Radius:</label>
+      <input type="number" 
+        id="radius" 
+        placeholder="Enter Radius (r)" 
+        name="radius" 
+        class="form-control mb-3"
+        min="1" 
+        required />
+    </div>
+    <div class="form-group">
+      <label for="slant_height">Slant Height:</label>
+      <input type="number" 
+        id="slant_height" 
+        placeholder="Enter Slant Height (s)" 
+        name="slant_height" 
+        class="form-control mb-3"
+        min="1" 
+        required />
+    </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Radius</th>
+            <th scope="col">Slant Height</th>
+            <th scope="col">Area</th>
+          </tr>
+        </thead>
+        <tbody 
+          id="response" 
+          hx-target="closest tr" 
+          hx-swap="outerHTML swap:0.5s"> 
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

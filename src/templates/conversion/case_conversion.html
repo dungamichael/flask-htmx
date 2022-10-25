@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+  <h1>Case Conversion</h1>
+  <form 
+    hx-post="/main/conversion/case_conversion" 
+    hx-swap="beforeend" 
+    hx-target="#response" 
+    class="mb-3">
+    <div class="form-group">
+      <label for="original_value">Text:</label>
+      <input type="text" 
+        id="original_value" 
+        placeholder="Enter text to convert" 
+        name="original_value" 
+        class="form-control mb-3"
+        required />
+    </div>
+    <div class="form-group">
+      <label for="final_unit">To:</label>
+      <select class="form-control" id="final_unit" name="final_unit">
+        <option value="capitalize">Capitalcase</option>
+        <option value="lower">Lowercase</option>
+        <option value="swapcase">Swapcase</option>
+        <option value="title">Titlecase</option>
+        <option value="upper">Uppercase</option>
+      </select>
+    </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody 
+          id="response" 
+          hx-target="closest tr" 
+          hx-swap="outerHTML swap:0.5s"> 
+            <tr>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

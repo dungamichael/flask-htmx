@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+  <h1>Surface Area of a Cube</h1>
+  <form 
+    hx-post="/main/surface_area/cube" 
+    hx-swap="beforeend" 
+    hx-target="#response" 
+    class="mb-3">
+    <div class="form-group">
+      <label for="side">Side (s):</label>
+      <input type="number" 
+        id="side" 
+        placeholder="Enter Side (s)" 
+        name="side" 
+        class="form-control mb-3"
+        min="1" 
+        required />
+    </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Side (s)</th>
+            <th scope="col">Total Surface Area</th>
+          </tr>
+        </thead>
+        <tbody 
+          id="response" 
+          hx-target="closest tr" 
+          hx-swap="outerHTML swap:0.5s"> 
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

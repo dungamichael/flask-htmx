@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+  <h1>Volume of a Cone</h1>
+  <form 
+    hx-post="/main/volume/cone" 
+    hx-swap="beforeend" 
+    hx-target="#response" 
+    class="mb-3">
+    <div class="form-group">
+      <label for="base_area">Base area:</label>
+      <input type="number" 
+        id="base_area" 
+        placeholder="Enter the value of base area (b)" 
+        name="base_area" 
+        class="form-control mb-3"
+        min="1" 
+        required />
+    </div>
+    <div class="form-group">
+      <label for="slant_height">Height (h):</label>
+      <input type="number" 
+        id="height" 
+        placeholder="Enter Height (h)" 
+        name="height" 
+        class="form-control mb-3"
+        min="1" 
+        required />
+    </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Base area (b)</th>
+            <th scope="col">Height (h)</th>
+            <th scope="col">Area</th>
+          </tr>
+        </thead>
+        <tbody 
+          id="response" 
+          hx-target="closest tr" 
+          hx-swap="outerHTML swap:0.5s"> 
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
